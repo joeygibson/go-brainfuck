@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-brainfuck/machine"
+	"go-brainfuck/brainfuck"
 	"io/ioutil"
 	"os"
 )
@@ -15,6 +15,9 @@ func main() {
 		os.Exit(-1)
 	}
 
-	m := machine.NewMachine(string(code), os.Stdin, os.Stdout)
-	m.Execute()
+	compiler := brainfuck.NewCompiler(string(code))
+	instructions := compiler.Compile()
+
+	machine := brainfuck.NewMachine(instructions, os.Stdin, os.Stdout)
+	machine.Execute()
 }
