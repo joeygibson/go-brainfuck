@@ -8,6 +8,11 @@ import (
 )
 
 func main() {
+	if len(os.Args) != 2 {
+		_, _ = fmt.Fprintln(os.Stderr, "Usage: go-brainfuck <input file>")
+		os.Exit(-1)
+	}
+
 	filename := os.Args[1]
 	code, err := ioutil.ReadFile(filename)
 	if err != nil {
