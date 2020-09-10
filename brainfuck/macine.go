@@ -1,6 +1,8 @@
 package brainfuck
 
-import "io"
+import (
+	"io"
+)
 
 type Machine struct {
 	code   []*Instruction
